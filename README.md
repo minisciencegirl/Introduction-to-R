@@ -6,6 +6,6 @@ Our lesson plan will start off with:
 1) Introducing learners to R Studio, working directory organization and R Project
 2) How to import data into R?
 3) How to munge your dataframe using dplyr?
-4) What is tidy dataframe and how do you get there?
+4) What is tidy dataframe and how to tame your unruly dataframe into a tidier verson?
 5) Beautiful figures with ggplot2
 6) Wrap-up exercises
