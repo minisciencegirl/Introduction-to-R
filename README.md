@@ -1,6 +1,6 @@
 # Introduction-to-R
 
-This is the repo that will house our Introduction to R workshop materials. We have developed this workshop after running the UBC R Study Group for many years, as well as teaching/ helping at various Software Carpentry workshops.
+This is the repo that will house our Introduction to R workshop materials. We have developed this workshop after running the UBC R Study Group for many years, as well as teaching/ helping at various Software Carpentry Workshops.
 
 Our lesson plan consists of the following:
 1) Introducing learners to R Studio, working directory organization and R Project
