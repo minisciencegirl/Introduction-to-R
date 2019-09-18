@@ -34,7 +34,7 @@ After you open RStudio, you should see the following 3 panels:
 
 ![ModernDive, Figure 1.3.](../images/RStudio_panels.png)
 
-### What are R pakcages?
+## What are R pakcages?
 R packages extend the functionality of R by providing additional functions, data and documentation
 * Think of R packages like apps that you can download onto a mobile phone
 * You can get R packages from CRAN
@@ -65,3 +65,35 @@ library(tidyverse)
 See [ModernDive Chapter 1](https://moderndive.com/1-getting-started.html) for further reading.
 
 
+## Workspace and .RData
+
+One day you will need to quit R, go do something else and return to your analysis later.
+
+One day you will be running multiple analyses in R and you want to keep them separate.
+
+One day you will need to bring data from the outside world into R and present results and figures from R back out to the world.
+
+So how do you know which parts of your analysis is "real" and where does your analysis "live"?
+
+
+### Where am I? (Working Directory)
+
+Working directory is where R will look, by default, for files you ask it to load or to save.
+
+You can explicitly check your working directory with:
+
+```{r}
+getwd()
+```
+
+It is also displayed at the top of the RStudio console
+
+### What if I don't like where my current working directory is?
+
+![Figure 1.5. Find my path](../images/No_setwd_0.png)
+
+DO NOT USE `setwd` unless you want Jenny Bryan to set your computer on fire!
+
+![Figure 1.6. Don't setwd()](../images/No_setwd_1.png)
+
+![Figure 1.7. Don't setwd()](../images/No_setwd_2.png)
