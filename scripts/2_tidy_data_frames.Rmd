@@ -1,5 +1,5 @@
 ---
-title: "TidyR and Tidy Dataframes Tutorial"
+title: "Introduction to R and Some Best Practices Suggestions"
 author: "Amy Lee (@minisciencegirl)"
 date: '2019-09-20'
 output:
@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Tidy Data and Data Analysis Pipeline
+## What are R and RStudio?
 
 ![Data Analysis Pipeline, Joseph V. Casillas.](../images/DataAnalysis.png)
 
