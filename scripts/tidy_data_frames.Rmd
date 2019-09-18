@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Tidy Data and Data Analysis Pipeline
 
-![Data Analysis Pipeline, Joseph V. Casillas.](DataAnalysis.png)
+![Data Analysis Pipeline, Joseph V. Casillas.](../images/DataAnalysis.png)
 
 > It is often said that 80% of data analysis is spent on the process of cleaning and preparing the data. (Dasu and Johnson, 2003)
 
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ### Example of untidy data (Jenny Bryan, STAT545)
-![Untidy data, Jenny Bryan.](untidy_lotr.png)
+![Untidy data, Jenny Bryan.](../images/untidy_lotr.png)
 
 
 ### Why are these examples of untidy data?
@@ -92,12 +92,12 @@ Check out Jenny Bryan's [LOTR GitHub Repo](https://github.com/jennybc/lotr-tidy)
 
 ## Challenge Question 2
 
+Let's use the EDAWR [Expert Data Analysis with R Workshop by RStudio](https://github.com/rstudio/EDAWR) datasets to practice a few more tidyr functionality. We've exported the `cases` and `storms` data for you as `.csv` files and they are in the `data` directory.  
+
 In the EDAWR dataset, `cases`, we have the number of tuberculosis cases reported in France, Germany and United States from 2011 to 2013. What are the total number of tuberculosis cases reported over three years per country?
 
 ```{r}
-devtools::install_github("rstudio/EDAWR")
-library(EDAWR)
-cases
+cases <- read_csv("../data/TB_cases.csv")
 ```
 
 ## Other useful functions from tidyr - Separate and Unite
@@ -105,7 +105,7 @@ cases
 Let's use the EDAWR dataset again. This time, we are going to use the `storms` data, which has the maximum wind speeds for six Atlantic hurricanes. 
 
 ```{r}
-storms
+storms <- read_csv("../data/hurricanes.csv")
 ```
 
 `separate()` allows you to separate a column into multiple other columns by using a separator. For example, if we want to separate the `date` column into `year`, `month`, `day`, we can do that by:
