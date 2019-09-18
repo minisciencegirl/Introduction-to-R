@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 For this workshop, we will be using R via RStudio.
 
 You can think of R like a car's engine, while RStudio is like a car's dashboard.
+
 * R is the programming language that runs computations
 * RStudio is an integrated development environment (IDE) that provides an interface by adding convenient features and tools.
 
@@ -28,6 +29,7 @@ Instead, we will be using the RStudio's interface.
 ![ModernDive, Figure 1.2.](../images/R_vs_RStudio_v2.png)
 
 After you open RStudio, you should see the following 3 panels:
+
 * console,
 * files,
 * and environment.
@@ -36,6 +38,7 @@ After you open RStudio, you should see the following 3 panels:
 
 ## What are R pakcages?
 R packages extend the functionality of R by providing additional functions, data and documentation
+
 * Think of R packages like apps that you can download onto a mobile phone
 * You can get R packages from CRAN
 * Or bioinformatics related R packages from bioconductor
@@ -97,3 +100,28 @@ DO NOT USE `setwd` unless you want Jenny Bryan to set your computer on fire!
 ![Figure 1.6. Don't setwd()](../images/No_setwd_1.png)
 
 ![Figure 1.7. Don't setwd()](../images/No_setwd_2.png)
+
+So what's wrong with:
+
+```{r eval=FALSE}
+setwd("/Users/amy/fuzzy_alpaca/cute_animals/foofy/data")
+df <- read.delim("raw_foofy_data.csv")
+p <- ggplot(df, aes(x, y)) + geom_point()
+ggsave("../figs/foofy_scatterplot.png")
+```
+
+The chance of the `setwd()` command having the desiered effect - making the file paths work - for anyone besides its author is 0%. It might not even work for the author a year or two from now. So essentially your data analysis project is not self-contained and protable, which makes recreating the plot impossible.
+
+Read more here: https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
+
+
+### Suggestions on how to organize your data analysis:
+
+Typically, I organize each data analysis into a project using RStudio Project. I tend to have a directory each for:
+
+* raw data
+* processed data
+* output or figures
+* scripts
+
+
