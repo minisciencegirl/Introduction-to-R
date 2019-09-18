@@ -1,7 +1,7 @@
 ---
-title: "TidyR Tutorial"
+title: "TidyR and Tidy Dataframes Tutorial"
 author: "Amy Lee (@minisciencegirl)"
-date: '2017-03-15'
+date: '2019-09-20'
 output:
   html_document: default
   pdf_document: default
@@ -58,7 +58,7 @@ fship <- read_csv("../data/The_Fellowship_Of_The_Ring.csv")
 
 ttow <- read_csv("../data/The_Two_Towers.csv")
 
-rking <- read_csv("The_Return_Of_The_King.csv")
+rking <- read_csv("../data/The_Return_Of_The_King.csv")
 ```
 
 
