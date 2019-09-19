@@ -440,36 +440,42 @@ summary {
 <p><br></p>
 <div id="final-exercise" class="section level2">
 <h2>Final Exercise</h2>
-<p>The file “DE_genes_unfiltered.csv” contains a list of differentially expressed genes from experiment on bacteria. Your task is the followng: to import the data, create additional columns, filter on some sepecified thresholds, and create a plot.</p>
+<p>The file “DE_genes_unfiltered.csv” contains a list of differentially expressed genes from experiment on bacteria. Your task is the followng: to import the data, create additional columns, filter on some sepecified thresholds, map between gene IDs and names, and create a plot.</p>
 <p>The points below outline in more detail what should be done:</p>
 <ul>
-<li>Import the data using the <code>read.csv()</code> function</li>
+<li>Import the data (example_human_genes.csv) using the <code>read.csv()</code> function</li>
 <li>Create a new column containing the absolute absolute fold change (Hint: use the <code>abs()</code> function)</li>
 <li>Filter the genes on the follow conditions:
 <ul>
 <li>Adjusted p-value less than or equal to 0.05</li>
 <li>Absolute fold change greater than or equal to <code>log2(1.5)</code></li>
 </ul></li>
-<li>Once the data has been filtered, create a plot with log2 fold change on the x-axis and adjusted p-value on the x-axis
+</ul>
+<p>Next, use the provided mapping table (conversion_table.csv) to map between Ensembl ID and HGNC symbol.</p>
+<p>Once the data has been filtered, create a plot with log2 fold change on the x-axis and adjusted p-value on the x-axis</p>
 <ul>
 <li>NOTE: use the <code>-log10(adjusted_pvalue)</code> for the plot</li>
 <li>Colour the points by adjusted p-value</li>
 <li>Set the transparancy to 70% (ALL points)</li>
 <li>Add a title to the plot, and change the axis and legend titles to be more “readable”</li>
-</ul></li>
 </ul>
 <p><br></p>
 <div id="solution" class="section level3">
 <h3>Solution</h3>
 <pre class="r"><code>suppressPackageStartupMessages(library(tidyverse))
 
-DEGenes &lt;- read.csv(&quot;../data/DE_genes_unfiltered.csv&quot;)
+DEGenes &lt;- read.csv(&quot;../data/example_human_genes.csv&quot;)
+conversion_table &lt;- read.csv(&quot;../data/conversion_table.csv&quot;)
+
 
 DEGenes_new &lt;- DEGenes %&gt;% 
   mutate(abs_l2fc = abs(log2FoldChange)) %&gt;% 
-  filter(adjusted_pvalue &lt;= 0.05, abs_l2fc &gt;= log2(1.5))
+  filter(padj &lt;= 0.05, abs_l2fc &gt;= log2(1.5))
 
-ggplot(DEGenes_new, aes(log2FoldChange, -log10(adjusted_pvalue), colour = log2FoldChange)) +
+DEGenes_joined &lt;- DEGenes_new %&gt;% 
+  left_join(., conversion_table, by = c(&quot;gene&quot; = &quot;ensembl_gene_id&quot;))
+
+ggplot(DEGenes_joined, aes(log2FoldChange, -log10(padj), colour = log2FoldChange)) +
   geom_point(alpha = 0.7) +
   labs(title = &quot;Plot of DE Genes&quot;, 
        x = &quot;Log2 Fold Change&quot;, 
