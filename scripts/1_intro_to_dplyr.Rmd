@@ -300,23 +300,20 @@ matching entries in "y". Note that the output data frame will contain all rows
 and columns from "x", as well as all columns from "y", but only matching rows
 from "y".
 
-First let's make some simple example data to play with:
+First let's load some simple example data to play with:
 ```{r left_join_ex}
-df_1 <- data.frame(FruitID = c("f1", "f2", "f3", "f4", "f5"),
-                   Fruit_Exp = c(1, -1, 0, 4, -8))
+fruits1 <- read.csv("../data/fruits_table1.csv")
+fruits2 <- read.csv("../data/fruits_table2.csv")
 
-df_2 <- data.frame(FruitID = c("f1", "f2", "f3", "f4", "f5", "f6", "f7"),
-                   FruitName = c("apple", "orange", "banana", "pear", "blueberry", "melon", "peach"))
-
-head(df_1)
-head(df_2)
+head(fruits1)
+head(fruits2)
 ```
 
 Now we can use `left_join()` to combine the two tables, based on matching values
 in a specified column. The syntax is as follow:
 ```{r left_join}
 
-left_join(df_1, df_2, by = "FruitID")
+left_join(fruits1, fruits2, by = "FruitID")
 
 ```
 
