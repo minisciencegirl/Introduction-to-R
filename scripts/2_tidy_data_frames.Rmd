@@ -23,6 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 * every row represents an observation
 * also known as long format
 
+![Wide (untidy) vs. long (tidy) data, example from Software Carpentry.](../images/wide_vs_long.png)
+
+As researcher, you are probably used to using the "wide" format, where each row is often a site/ subject/ patient, and you have multiple observation variables containing the same type of data. Data input may be simpler in the wide format and definitely easier for human eyeballs.
 
 ### Why do we need tidy data?
 * easy to manipulate (variable are easy to access as vectors)
@@ -73,11 +76,14 @@ This dataframe is still untidy because "word count" is spread out between two co
 * `gather()` up the word counts into one column
 * create a new column for `Gender`
 
+![How gather works, example from Software Carpentry.](../images/how_gather_works.png)
+
+
 Time to make this dataframe tidy!
 
 ```{r}
-lotr_tidy <-
-  gather(lotr_untidy, key = 'Gender', value = 'Words', Female, Male)
+lotr_tidy <- lotr_untidy %>% 
+  gather(key = 'Gender', value = 'Words', Female, Male)
 
 lotr_tidy
 ```
@@ -88,6 +94,13 @@ Check out Jenny Bryan's [LOTR GitHub Repo](https://github.com/jennybc/lotr-tidy)
 ## Challenge Question 1
 
 `spread()` is another tidyr function that converts a dataframe from the long format to the wide format. How would you convert the `lotr_tidy` dataframe back into the `lotr_untidy` dataframe?
+
+```{r}
+lotr_untidy <- lotr_tidy %>% 
+  spread(Gender, Words)
+
+lotr_untidy
+```
 
 
 ## Challenge Question 2
@@ -100,6 +113,15 @@ In the EDAWR dataset, `cases`, we have the number of tuberculosis cases reported
 cases <- read_csv("../data/TB_cases.csv")
 ```
 
+SOLUTION:
+```{r}
+cases_tidy <- cases %>% 
+  gather(key = "Year", value = "TB_cases", `2011`:`2013`) %>% 
+  group_by(country) %>% 
+  summarise(sum(TB_cases))
+```
+
+
 ## Other useful functions from tidyr - Separate and Unite
 
 Let's use the EDAWR dataset again. This time, we are going to use the `storms` data, which has the maximum wind speeds for six Atlantic hurricanes. 
@@ -111,10 +133,16 @@ storms <- read_csv("../data/hurricanes.csv")
 `separate()` allows you to separate a column into multiple other columns by using a separator. For example, if we want to separate the `date` column into `year`, `month`, `day`, we can do that by:
 
 ```{r}
-storms.sep <- separate(storms, date, c("year", "month", "day"), sep = "-")
+storms.sep <- storms %>% 
+  separate(date, c("year", "month", "day"), sep = "-")
 ```
 
 ## Challenge Question 3
 
 How do you combine the three separate columns, `year`, `month`, `day`, that you just created in `storms.sep` back into one column, `date`? Hint: `unite()` works the opposite way as `separate()`.
+
+```{r}
+storms.unite <- storms.sep %>% 
+  unite("date", c("year", "month", "day"), sep = "-")
+```
 
