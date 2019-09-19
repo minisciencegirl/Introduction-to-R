@@ -459,6 +459,7 @@ summary {
 <li>Set the transparancy to 70% (ALL points)</li>
 <li>Add a title to the plot, and change the axis and legend titles to be more “readable”</li>
 </ul>
+<p>Additionally, generate a histogram of the base mean for each genes. Set the number of bins to 50. For an extra challenge, change the theme to black and white. Change the bars to blue, with a black outline. Hint: The function you want is a variant of the <code>theme()</code> function from ggplot.</p>
 <p><br></p>
 <div id="solution" class="section level3">
 <h3>Solution</h3>
@@ -480,7 +481,11 @@ ggplot(DEGenes_joined, aes(log2FoldChange, -log10(padj), colour = log2FoldChange
   labs(title = &quot;Plot of DE Genes&quot;, 
        x = &quot;Log2 Fold Change&quot;, 
        y =&quot;Adjusted P-Value (-log10)&quot;,
-       colour = &quot;Log2 Fold Change&quot;)</code></pre>
+       colour = &quot;Log2 Fold Change&quot;)
+
+ggplot(DEGenes_joined, aes(baseMean)) +
+  geom_histogram(bins = 50, fill = &quot;blue&quot;, colour = &quot;black&quot;) +
+  theme_bw()</code></pre>
 <p><br></p>
 </div>
 </div>

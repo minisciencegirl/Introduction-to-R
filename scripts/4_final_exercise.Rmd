@@ -4,7 +4,7 @@ output:
   html_document:
     code_folding: "hide"
 ---
-
+  
 <br>
 
 ## Final Exercise
@@ -32,11 +32,17 @@ Once the data has been filtered, create a plot with log2 fold change on the x-ax
 * Set the transparancy to 70% (ALL points)
 * Add a title to the plot, and change the axis and legend titles to be more "readable"
 
+Additionally, generate a histogram of the base mean for each genes. Set the
+number of bins to 50. For an extra challenge, change the theme to black and
+white. Change the bars to blue, with a black outline. Hint: The function you
+want is a variant of the `theme()` function from ggplot.
+
+
 <br>
 
 ### Solution
 
-```{r eval = FALSE}
+```{r eval = FALSE, warning = FALSE}
 suppressPackageStartupMessages(library(tidyverse))
 
 DEGenes <- read.csv("../data/example_human_genes.csv")
@@ -57,6 +63,9 @@ ggplot(DEGenes_joined, aes(log2FoldChange, -log10(padj), colour = log2FoldChange
        y ="Adjusted P-Value (-log10)",
        colour = "Log2 Fold Change")
 
+ggplot(DEGenes_joined, aes(baseMean)) +
+  geom_histogram(bins = 50, fill = "blue", colour = "black") +
+  theme_bw()
 ```
 
 <br>
