@@ -3,13 +3,15 @@ title: "Introduction to R and Some Best Practices Suggestions"
 author: "Amy Lee (@minisciencegirl)"
 date: '2019-09-20'
 output:
-  html_document: default
+  html_document: 
+    code_folding: "hide"
   pdf_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = "")
 ```
+
 
 ## What are R and RStudio?
 
