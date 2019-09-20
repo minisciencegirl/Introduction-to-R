@@ -5,6 +5,7 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
     toc: yes
+    code_folding: "hide"
 ---
 
 ***
@@ -45,11 +46,10 @@ Illustrator, or Inkscape.
 First, let's make sure everything's loaded:
 ```{r}
 # Download the packages
-# install.packages(c("dplyr", "gapminder"))
+# install.packages(c("tidyverse", "gapminder"))
 
 # Load the packages for use
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(gapminder)
 ```
 
@@ -102,6 +102,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 Modify the example so that the figure shows how life expectancy has
 changed over time:
 ```{r, eval=FALSE}
+# Previous example:
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point()
 ```
