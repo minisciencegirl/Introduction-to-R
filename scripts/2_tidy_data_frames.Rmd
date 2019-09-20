@@ -55,15 +55,19 @@ Let's load our required packages:
 library(tidyverse)
 ```
 
+```{r echo=FALSE}
+library(here)
+```
+
 
 Let's read these dataframes in:
 
 ```{r}
-fship <- read_csv("../data/The_Fellowship_Of_The_Ring.csv")
+fship <- read_csv(here("data", "The_Fellowship_Of_The_Ring.csv"))
 
-ttow <- read_csv("../data/The_Two_Towers.csv")
+ttow <- read_csv(here("data", "The_Fellowship_Of_The_Ring.csv"))
 
-rking <- read_csv("../data/The_Return_Of_The_King.csv")
+rking <- read_csv(here("data", "The_Fellowship_Of_The_Ring.csv"))
 ```
 
 
@@ -97,9 +101,9 @@ Check out Jenny Bryan's [LOTR GitHub Repo](https://github.com/jennybc/lotr-tidy)
 
 `spread()` is another tidyr function that converts a dataframe from the long format to the wide format. How would you convert the `lotr_tidy` dataframe back into the `lotr_untidy` dataframe?
 
-```{r}
+```{r eval=FALSE}
 lotr_untidy <- lotr_tidy %>% 
-  spread(Gender, Words)
+   spread(key = "Gender", value = "Words")
 
 lotr_untidy
 ```
@@ -112,7 +116,7 @@ Let's use the EDAWR [Expert Data Analysis with R Workshop by RStudio](https://gi
 In the EDAWR dataset, `cases`, we have the number of tuberculosis cases reported in France, Germany and United States from 2011 to 2013. What are the total number of tuberculosis cases reported over three years per country?
 
 ```{r}
-cases <- read_csv("../data/TB_cases.csv")
+cases <- read_csv(here("data", "TB_cases.csv"))
 ```
 
 SOLUTION:
@@ -129,7 +133,7 @@ cases_tidy <- cases %>%
 Let's use the EDAWR dataset again. This time, we are going to use the `storms` data, which has the maximum wind speeds for six Atlantic hurricanes. 
 
 ```{r}
-storms <- read_csv("../data/hurricanes.csv")
+storms <- read_csv(here("data","hurricanes.csv"))
 ```
 
 `separate()` allows you to separate a column into multiple other columns by using a separator. For example, if we want to separate the `date` column into `year`, `month`, `day`, we can do that by:
