@@ -4,7 +4,7 @@ author: "Amy Lee (@minisciencegirl)"
 date: '2019-09-20'
 output:
   html_document: 
-    code_folding: "hide"
+    code_folding: "show"
   pdf_document: default
 ---
 
